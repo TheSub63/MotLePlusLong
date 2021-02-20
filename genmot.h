@@ -91,3 +91,7 @@ double genrand_res53(void) ;
 /* These real versions are due to Isaku Wada, 2002/01/09 added */
 
 char * genLettres(int n);
+
+char * genLettresMenu(int c, int v);
+
+char * retirerAccent(char * message);
