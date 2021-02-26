@@ -42,14 +42,9 @@
    http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
    email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
 */
-
-#include <time.h>
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>
-#include <ctype.h>
 /* Period parameters */  
 #define N 624
 #define M 397
@@ -90,8 +85,16 @@ double genrand_real3(void);
 double genrand_res53(void) ;
 /* These real versions are due to Isaku Wada, 2002/01/09 added */
 
+typedef struct
+{
+  char * mot;
+  int longueur;
+} solution;
+
 char * genLettres(int n);
 
-char * genLettresMenu(int c, int v);
-
 char * retirerAccent(char * message);
+
+int utiliseLettre(char * mot, char * lettres, int params, int profondeur, solution * s);
+
+int lettresUtilisateurs(char * lettres);

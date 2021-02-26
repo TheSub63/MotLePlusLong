@@ -1,0 +1,23 @@
+# Algortihmique d'Aide à la Décision
+
+  Par Clément Guilbert
+## Dossier n°2 : Mot le plus long
+
+### Introduction
+
+Afin de poursuivre dans l'adaptation de solutions pour le jeux "des chiffres et des lettres", j'ai décidé d'adapter un solveur de l'épreuve du mot le plus log. Dans celle-ci, les candidats reçoivent une série de lettres à partir desquelles ils doivent former le mot le plus long possible. Il est possible de ne pas utiliser toutes les lettres.
+
+Cet algorithme sera également fait en C et proposera soit de tirer aléatoirement un nombre équitable de voyelles et de consonnes, soit de laisser le joueur entrer ses propres lettres.
+
+### Principe
+L'idée principale d'un tel algorithme est d'effectuer récursivement les opérations possibles tant qu'elles améliorent l'écart au résultat. En parcourant plusieurs arbres récursif, on peut ainsi favoriser des branches par rapport à d'autres et conserver la solution optimale.
+Pour résoudre ce problème, j'ai choisi de parcourir un dictionnaire de mots français en vérifiant pour chaque mot si l'une des lettres proposés correspond à la première. Si ce n'est pas le cas, la boucle s'arrête et passe au mot suivant, sinon, elle continue en excluant la lettre. Si le mot est entièrement faisable avec la liste de lettres proposée, il est sauvegardé ainsi que sa longueur, à condition qu'il soit plus long que la solution précédente s'il y en a une.
+
+### Code
+#### Main.c
+```
+
+
+```
+
+### Tests et Code Review
