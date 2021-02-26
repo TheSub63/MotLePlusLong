@@ -133,24 +133,26 @@ char * retirerAccent(char * message)
 */
 int lettresUtilisateurs(char * lettres)
 {
-	int c = 0, taille=2;
+	//int c = 0, taille=12;
   printf("\nEntrez les lettres que vous voulez tester :");
-
-  if(lettres != NULL)
+  
+   fgets(lettres, 100, stdin); 
+   printf("%s", lettres); 
+   return strlen(lettres); 
+  /*if(lettres != NULL)
   {
 	  unsigned int i = 0;
 	  while (( c = getchar() ) != '\n' && c != 0)
 	  {
 		  lettres[i++]=(char)c;
 
-		  if(i == taille)
+		  /*if(i == taille)
 		  {
         taille = i+1;
 			  lettres = realloc(lettres, taille);
-		  }
-	  }
+		  }*/
+	  /*}
     lettres[i] = '\0';
     printf("\nMot:%s \nTaille : %d\n",lettres,taille);
-  }
-  return taille;
+  }*/
 }

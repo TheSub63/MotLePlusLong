@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
   /**
     Allocation de déclaration des variables
   */
-  int params = 10, p = 0, i = 0;
+  int params = 12, p = 0, i = 0;
   char * termeini = (char *) malloc(params * sizeof(char));
   char * mot = (char *) malloc(params * sizeof(char));
   char ** dico = (char **) malloc (100 * sizeof(char *));
