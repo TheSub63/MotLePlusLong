@@ -152,5 +152,5 @@ int lettresUtilisateurs(char * lettres)
     lettres[i] = '\0';
     printf("\nMot:%s \nTaille : %d\n",lettres,taille);
   }
-  return taille-1;
+  return taille;
 }

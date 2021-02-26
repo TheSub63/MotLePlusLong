@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
   /**
     Allocation de déclaration des variables
   */
-  int params = 30, p = 0, i = 0;
+  int params = 10, p = 0, i = 0;
   char * termeini = (char *) malloc(params * sizeof(char));
   char * mot = (char *) malloc(params * sizeof(char));
   char ** dico = (char **) malloc (100 * sizeof(char *));
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
   while ((read = fscanf(file,"%s",mot)) != -1) {
     if(!utiliseLettre(mot, termeini, params, p, &motLePlusLong))
     {
-      printf("Ok");
+      //printf("Ok");
       motLePlusLong.mot = (char *) malloc(params * sizeof(char));
       strcpy(motLePlusLong.mot, mot);
       motLePlusLong.longueur = strlen(mot);
@@ -48,9 +48,5 @@ int main(int argc, char *argv[])
     Affichage de la solution
   */
   printf("Resultat : \n%s \nLongueur : %d", motLePlusLong.mot, motLePlusLong.longueur);
-
-  free(dico);
-  free(termeini);
-  free(mot);
 	return(0);
 }
