@@ -3,7 +3,7 @@
 /*
     Genère un tableau de n lettres aléatoires avec la graine fournie a init_genrand()
 */
-char * genLettres(int n)
+char * genLettres(int n, int seed)
 {
     /**
         Déclaration des tableaux de consonnes et de voyelles
@@ -14,8 +14,8 @@ char * genLettres(int n)
     /**
         Initialisation du générateur aléatoire avec une graine particulière
     */
-    init_genrand(26);
-    char * res = (char *) malloc (sizeof(char) * n);
+    init_genrand(seed);
+    char * res = (char *) malloc (sizeof(char) * (n+1));
     if(res==NULL) exit(1);
     /**
         Tirage d'un nombre équivalent de consonnes et de voyelles
@@ -44,8 +44,10 @@ int utiliseLettre(char * mot, char * lettres, int params, int profondeur, soluti
     Déclaration des paramètres et stockage des lettres disponibles dans une chaine temporaire
   */
   int i=0, res = 1;
-  char * temp = (char *) malloc((params-1) * sizeof(char));
-  strcpy(temp, lettres);
+  int taille = 100;
+  taille = params+1;
+  char temp[taille];
+  strcpy(temp,lettres);
 
   /*
     Boucle de vérification de chaque lettre à la lettre du mot correspondant à l'index de profondeur
@@ -53,7 +55,6 @@ int utiliseLettre(char * mot, char * lettres, int params, int profondeur, soluti
   */
   while(i < params && res == 1)
   {
-    //printf("%c\n",mot[0]);
     if(mot[0] == '\0')
     {
       /*
@@ -133,26 +134,7 @@ char * retirerAccent(char * message)
 */
 int lettresUtilisateurs(char * lettres)
 {
-	//int c = 0, taille=12;
   printf("\nEntrez les lettres que vous voulez tester :");
-  
-   fgets(lettres, 100, stdin); 
-   printf("%s", lettres); 
-   return strlen(lettres); 
-  /*if(lettres != NULL)
-  {
-	  unsigned int i = 0;
-	  while (( c = getchar() ) != '\n' && c != 0)
-	  {
-		  lettres[i++]=(char)c;
-
-		  /*if(i == taille)
-		  {
-        taille = i+1;
-			  lettres = realloc(lettres, taille);
-		  }*/
-	  /*}
-    lettres[i] = '\0';
-    printf("\nMot:%s \nTaille : %d\n",lettres,taille);
-  }*/
+  fgets(lettres, 100, stdin); 
+  return strlen(lettres); 
 }
