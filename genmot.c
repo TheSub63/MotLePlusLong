@@ -15,7 +15,7 @@ char * genLettres(int n, int seed)
         Initialisation du générateur aléatoire avec une graine particulière
     */
     init_genrand(seed);
-    char * res = (char *) malloc (sizeof(char) * (n+1));
+    char * res = calloc ( n + 1 ,sizeof(char) );
     if(res==NULL) exit(1);
     /**
         Tirage d'un nombre équivalent de consonnes et de voyelles
@@ -37,6 +37,8 @@ char * genLettres(int n, int seed)
       - params : le nombre de lettres
       - profondeur : indique l'itération de l'algorithme pour un mot
       - s : meilleure solution actuelle
+
+    Retourne 0 si la solution est recevable
 */
 int utiliseLettre(char * mot, char * lettres, int params, int profondeur, solution * s)
 {
@@ -96,41 +98,9 @@ int utiliseLettre(char * mot, char * lettres, int params, int profondeur, soluti
   return res; 
 }
 
-/**
-    Fonction servant à retirer les accents d'un mot => Problème à la lecture
-*/
-char * retirerAccent(char * message)
-{
-    char * accent = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÌÍÎÏìíîïÙÚÛÜùúûüÿÑñÇç";
-    char * sansAccent = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeIIIIiiiiUUUUuuuuyNnCc";
-    char * messageCourt;
-    int i=0,j=0,k=0,taille;
-    taille=strlen(message);
- 
-    for (i=0;i<=taille;i++)
-    {
-        for(j=0;j<=104;j=j+2)
-        {
-            if((message[i]==accent[j])&&(message[i+1]==accent[j+1]))
-            {
-                message[i]=sansAccent[j/2];
-                for(k=i+1;k<taille;k++)
-                {
-                    message[k]=message[k+1];
-                }
-                char * buf;
-                memcpy(buf, message, taille - 1);
-                buf[taille] = '\0';
-                taille=strlen(message);
-            }
-        }
-    }
-    return message;
-}
-
-
 /*
   Initialise la liste de lettres avec celles proposées par l'utilisateur
+  Retourne le nombre de lettres entrées
 */
 int lettresUtilisateurs(char * lettres)
 {

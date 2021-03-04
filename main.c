@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
   /**
    *  Choix entre la génération aléatoire et la soumission de lettres par l'utilisateur 
   */
-  printf("Voulez vous entrer vos propres lettres ou les générer aléatoirement? (1/2)");
+  printf("Voulez vous entrer vos propres lettres ou les générer aléatoirement? (1 pour entrer / 2 pour générer)");
   scanf("%d",&choix);
   while ((getchar()) != '\n'); //Vide le buffer
 
@@ -24,12 +24,14 @@ int main(int argc, char *argv[])
   
   if(choix == 1)
   {
-    printf("Entrez la graine souhaitée pour le générateur aléatoire.");
+    params = lettresUtilisateurs(termeini);
+  }
+  else
+  {
+    printf("Entrez la graine (nombre entier) souhaitée pour le générateur aléatoire.");
     scanf("%d",&choix);
     termeini=genLettres(params, choix);
   }
-  else
-    params = lettresUtilisateurs(termeini);
 
   /**
     Affichage des lettres reçues

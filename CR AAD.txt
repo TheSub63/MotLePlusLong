@@ -293,3 +293,6 @@ int lettresUtilisateurs(char * lettres)
 ```
 
 ### Tests et Code Review
+
+Après les tests d'Aymeric, j'ai pu mettre en évidence certains problèmes, notamment l'allocation des lettres lors d'une génération aléatoire. Aymeric avait fait remarqué qu'une variable pouvait être non initialisée dans le strcpy d'utiliseLettres. Il s'agissait en fait de *lettres, pas temp, qui pouvait être nul depuis la génération. En utilisant calloc dans genLettres, le comportement non initialisé est pris en charge.
+J'ai également modifié un peu le menu utilsateur en le rendant plus explicite.
